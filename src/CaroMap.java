@@ -1,25 +1,34 @@
 public class CaroMap {
     public static void main(String[] args) {
-        for (int i = 0; i < 5; i++) {
-            drawCaroMap();
-        }
-        for (int j = 0; j < 16; j++) {
-            System.out.print("-");
+        displayCaroMap(drawCaroMap());
+    }
+
+    private static void displayCaroMap(char[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print(array[i][j]);
+            }
+            System.out.println();
         }
     }
 
-    private static void drawCaroMap() {
-        for (int j = 0; j < 16; j++) {
-            System.out.print("-");
-        }
-        System.out.println();
-        for (int i = 0; i < 12; i++) {
-            if (i % 2 == 0) {
-                System.out.print("|");
+    private static char[][] drawCaroMap() {
+        char[][] arrayCaroMap = new char[5][99];
+        for (int i = 0; i < arrayCaroMap.length; i++) {
+            for (int j = 0; j < arrayCaroMap[i].length; j++) {
+                if (i % 2 == 0) {
+                    arrayCaroMap[i][j] = '-';
+                } else {
+                    if (j % 2 == 0) {
+                        arrayCaroMap[i][j] = '|';
+                    } else {
+                        arrayCaroMap[i][j] = ' ';
+                    }
+                }
+
             }
-            System.out.print(" ");
         }
-        System.out.println();
+        return arrayCaroMap;
     }
 
 }
