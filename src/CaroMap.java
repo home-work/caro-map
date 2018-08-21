@@ -13,16 +13,22 @@ public class CaroMap {
             int coordinatesOfColumn = (getCoordinatesOfColumn() - 1) * 2 + 1;
             if (coordinatesOfRow == previousCoordinatesRowOfPlayer && coordinatesOfColumn == previousCoordinatesColumnOfPlayer) {
                 System.out.println("Tọa độ đã được ghi. Mời nhập lại!");
-                continue;
-            }else {
+                coordinatesOfRow = (getCoordinatesOfRow() - 1) * 2 + 1;
+                coordinatesOfColumn = (getCoordinatesOfColumn() - 1) * 2 + 1;
                 if (i % 2 == 0) {
                     displayCaroMap(drawCaroMapWithValueO(coordinatesOfRow, coordinatesOfColumn, array));
                 } else {
                     displayCaroMap(drawCaroMapWithValueX(coordinatesOfRow, coordinatesOfColumn, array));
                 }
-                previousCoordinatesRowOfPlayer = coordinatesOfRow;
-                previousCoordinatesColumnOfPlayer = coordinatesOfColumn;
+            } else {
+                if (i % 2 == 0) {
+                    displayCaroMap(drawCaroMapWithValueO(coordinatesOfRow, coordinatesOfColumn, array));
+                } else {
+                    displayCaroMap(drawCaroMapWithValueX(coordinatesOfRow, coordinatesOfColumn, array));
+                }
             }
+            previousCoordinatesRowOfPlayer = coordinatesOfRow;
+            previousCoordinatesColumnOfPlayer = coordinatesOfColumn;
         }
     }
 
