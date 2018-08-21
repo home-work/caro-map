@@ -6,15 +6,23 @@ public class CaroMap {
         int numberOfColumns = getNumberOfColumns() * 2 + 1;
         char[][] array = drawCaroMap(numberOfRows, numberOfColumns);
         displayCaroMap(array);
+        int previousCoordinatesRowOfPlayer = -1;
+        int previousCoordinatesColumnOfPlayer = -1;
         for (int i = 0; i < 100; i++) {
             int coordinatesOfRow = (getCoordinatesOfRow() - 1) * 2 + 1;
             int coordinatesOfColumn = (getCoordinatesOfColumn() - 1) * 2 + 1;
-            if (i % 2 == 0) {
-                displayCaroMap(drawCaroMapWithValueO(coordinatesOfRow, coordinatesOfColumn, array));
-            } else {
-                displayCaroMap(drawCaroMapWithValueX(coordinatesOfRow, coordinatesOfColumn, array));
+            if (coordinatesOfRow == previousCoordinatesRowOfPlayer && coordinatesOfColumn == previousCoordinatesColumnOfPlayer) {
+                System.out.println("Tọa độ đã được ghi. Mời nhập lại!");
+                continue;
+            }else {
+                if (i % 2 == 0) {
+                    displayCaroMap(drawCaroMapWithValueO(coordinatesOfRow, coordinatesOfColumn, array));
+                } else {
+                    displayCaroMap(drawCaroMapWithValueX(coordinatesOfRow, coordinatesOfColumn, array));
+                }
+                previousCoordinatesRowOfPlayer = coordinatesOfRow;
+                previousCoordinatesColumnOfPlayer = coordinatesOfColumn;
             }
-
         }
     }
 
@@ -89,7 +97,6 @@ public class CaroMap {
                         arrayCaroMap[i][j] = ' ';
                     }
                 }
-
             }
         }
         return arrayCaroMap;
